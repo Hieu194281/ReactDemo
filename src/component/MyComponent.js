@@ -4,6 +4,7 @@
 import React from "react";
 import DisplayInfo from "./DisplayInfo";
 import AddUserInfo from "./AddUserInfo";
+import logo from "../logo.svg"
 
 class MyComponent extends React.Component {
 
@@ -25,6 +26,7 @@ class MyComponent extends React.Component {
     render() {
         return (
             <div>
+
                 <AddUserInfo handleAddUser={this.handleAddUser}></AddUserInfo>
                 <br></br>
                 <br></br>
