@@ -25,7 +25,7 @@ class DisplayInfo extends React.Component {
                     return (
                         <div key={user.id}>
                             {this.state.isShowList &&
-                                <div key={user.id} className={user.age > 18 ? 'red' : 'green'}>
+                                <div key={user.id} className={user.age < 18 ? 'red' : 'green'}>
                                     <div>My name is {user.name}</div>
                                     <div>My age is {user.age}</div>
                                     <hr></hr>
