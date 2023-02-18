@@ -4,7 +4,7 @@
 import React from "react";
 import DisplayInfo from "./DisplayInfo";
 import AddUserInfo from "./AddUserInfo";
-import logo from "../logo.svg"
+
 
 class MyComponent extends React.Component {
 
@@ -25,15 +25,17 @@ class MyComponent extends React.Component {
     //JSX
     render() {
         return (
-            <div>
-
-                <AddUserInfo handleAddUser={this.handleAddUser}></AddUserInfo>
-                <br></br>
-                <br></br>
-                <DisplayInfo
-                    listUsers={this.state.listUsers}
-                ></DisplayInfo>
-            </div>
+            <>
+                <div className="a">
+                    <AddUserInfo handleAddUser={this.handleAddUser}></AddUserInfo>
+                    <br></br>
+                    <br></br>
+                    <DisplayInfo
+                        listUsers={this.state.listUsers}
+                    ></DisplayInfo>
+                </div>
+                <div className="b"></div>
+            </>
         )
     }
 }
