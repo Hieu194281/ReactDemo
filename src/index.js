@@ -9,6 +9,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import User from './component/User/user';
 import Admin from './component/Admin/admin';
 import HomePage from './component/Home/HomePage';
+import ManageUser from './component/Admin/Content/ManageUser';
+import Dashboard from './component/Admin/Content/Dashboard';
+import ManageQuiz from './component/Admin/Content/ManageQuiz';
+import ManageQuestions from './component/Admin/Content/ManageQuestions';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,7 +25,13 @@ root.render(
           <Route path='/users' element={<User />} />
 
         </Route>
-        <Route path='/admin' element={<Admin />} />
+        <Route path='/admin' element={<Admin />}>
+          <Route index element={<Dashboard />} />
+          <Route path='manage-users' element={<ManageUser />} />
+          <Route path='manage-quiz' element={<ManageQuiz />} />
+          <Route path='manage-questions' element={<ManageQuestions />} />
+
+        </Route>
       </Routes>
 
     </BrowserRouter>
