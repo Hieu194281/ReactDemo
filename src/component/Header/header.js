@@ -17,13 +17,15 @@ const Header = () => {
                         <NavLink to='/admin' className='nav-link'>Admin</NavLink>
                     </Nav>
                     <Nav>
-                        <NavDropdown title="Settings" id="basic-nav-dropdown">
+                        <button className='btn-login'>Log in</button>
+                        <button className='btn-signup '>Sign up</button>
+                        {/*<NavDropdown title="Settings" id="basic-nav-dropdown">
                             <NavDropdown.Item href="">Log in</NavDropdown.Item>
                             <NavDropdown.Item href="">
                                 Log out
                             </NavDropdown.Item>
                             <NavDropdown.Item href="">Profile</NavDropdown.Item>
-                        </NavDropdown>
+    </NavDropdown> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
