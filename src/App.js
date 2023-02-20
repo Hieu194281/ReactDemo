@@ -1,16 +1,10 @@
-import logo from './logo.svg';
 import './App.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { increaseCounter, decreaseCounter } from './redux/action/counterAction';
-import MyComponent from './component/MyComponent';
-import React from 'react';
+import Header from './component/Header/header';
 
 const App = () => {
-
-
   return (
     <div className="App-container">
-      Hello world
+      <Header ></Header>
     </div>
   );
 }
