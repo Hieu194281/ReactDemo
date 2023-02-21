@@ -41,8 +41,8 @@ const ModalCreateUser = () => {
                             </select>
                         </div>
                         <div className='col-md-12'>
-                            <label className="form-label">Image</label>
-                            <input type='file' />
+                            <label className="form-label">Upload File Image</label>
+                            <input type='file' hidden />
                         </div>
                     </form>
                 </Modal.Body>
