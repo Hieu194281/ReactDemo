@@ -1,7 +1,10 @@
 .manage-user-container {
     .users-content {
-        .btn-add-new {
-            border: none;
+        button {
+            margin: 10px;
+        }
+        .table-users-container {
+            margin: 10px;
         }
     }
     .title{

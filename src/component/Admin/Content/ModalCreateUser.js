@@ -1,9 +1,10 @@
-import axios from "axios";
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 // import img from "../../../assets/bg2.jpg";
 import { IoIosAdd } from "react-icons/io";
+import { toast } from "react-toastify";
+import { postCreateNewUser } from "../../../service/apiServices";
 const ModalCreateUser = (props) => {
   const { show, setShow } = props;
 
@@ -16,7 +17,6 @@ const ModalCreateUser = (props) => {
     setImage("");
     setPreviewImg("");
   };
-  const handleShow = () => setShow(true);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,6 +31,13 @@ const ModalCreateUser = (props) => {
       setImage(event.target.files[0]);
     }
   };
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
 
   const handleCreateNewUser = async () => {
     // let data = {
@@ -40,19 +47,22 @@ const ModalCreateUser = (props) => {
     //   role: role,
     //   userImage: image,
     // };
-    const form = new FormData();
-    form.append("email", email);
-    form.append("password", password);
-    form.append("username", userName);
-    form.append("role", role);
-    form.append("userImage", image);
+    const isValidEmail = validateEmail(email);
+    if (!isValidEmail) {
+      toast.error("Email Invalid");
+      return;
+    }
 
     // console.log(data);
-    let res = await axios.post(
-      "http://localhost:8081/api/v1/participant",
-      form
-    );
-    console.log(res);
+    let data = await postCreateNewUser(email, password, userName, role, image);
+
+    if (data && data.EC === 0) {
+      toast.success(data.EM);
+      handleClose();
+    }
+    if (data && data.EC !== 0) {
+      toast.error(data.EM);
+    }
   };
 
   return (
