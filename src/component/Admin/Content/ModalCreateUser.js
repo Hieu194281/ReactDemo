@@ -1,12 +1,21 @@
+import axios from "axios";
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 // import img from "../../../assets/bg2.jpg";
 import { IoIosAdd } from "react-icons/io";
-const ModalCreateUser = () => {
-  const [show, setShow] = useState(false);
+const ModalCreateUser = (props) => {
+  const { show, setShow } = props;
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setEmail("");
+    setPassword("");
+    setRole("USER");
+    setUserName("");
+    setImage("");
+    setPreviewImg("");
+  };
   const handleShow = () => setShow(true);
 
   const [email, setEmail] = useState("");
@@ -23,12 +32,31 @@ const ModalCreateUser = () => {
     }
   };
 
+  const handleCreateNewUser = async () => {
+    // let data = {
+    //   email: email,
+    //   password: password,
+    //   username: userName,
+    //   role: role,
+    //   userImage: image,
+    // };
+    const form = new FormData();
+    form.append("email", email);
+    form.append("password", password);
+    form.append("username", userName);
+    form.append("role", role);
+    form.append("userImage", image);
+
+    // console.log(data);
+    let res = await axios.post(
+      "http://localhost:8081/api/v1/participant",
+      form
+    );
+    console.log(res);
+  };
+
   return (
     <div>
-      <Button variant="primary" onClick={handleShow}>
-        Add New User
-      </Button>
-
       <Modal
         backdrop="static"
         size="xl"
@@ -117,7 +145,7 @@ const ModalCreateUser = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleCreateNewUser}>
             Save
           </Button>
         </Modal.Footer>
