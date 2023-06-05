@@ -1,19 +1,18 @@
-import ModalCreateUser from "./ModalCreateUser"
+import ModalCreateUser from "./ModalCreateUser";
+import "./ManageUser.scss";
 
 const ManageUser = (props) => {
-    return (
-        <div className="manage-user-container">
-            <div className="title">
-                Manage User
-            </div>
-            <div className="users-content">
-                <div><button>Add new user</button></div>
-                <div>table user
-                    <ModalCreateUser />
-                </div>
-            </div>
+  return (
+    <div className="manage-user-container">
+      <div className="title">Manage User</div>
+      <div className="users-content">
+        <div>
+          <button onClick>Add new user</button>
         </div>
-    )
-}
+        <ModalCreateUser />
+      </div>
+    </div>
+  );
+};
 
-export default ManageUser
+export default ManageUser;
